@@ -2,13 +2,13 @@
   "id": "/",
   "name": "EgyMerch - متجر الملابس",
   "short_name": "EgyMerch",
-  "description": "متجر إلكتروني لبيع الملابس والمنتجات الحديثة من EgyMerch.",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#0d9488",
-  "orientation": "portrait",
   "lang": "ar",
+  "description": "متجر إلكتروني لبيع الملابس والمنتجات الحديثة من EgyMerch.",
   "scope": "/",
   "icons": [
     {
@@ -25,12 +25,11 @@
   "screenshots": [
     {
       "src": "/icons/screenshot1.png",
-      "type": "image/png",
-      "sizes": "540x720",
-      "label": "الصفحة الرئيسية"
+      "sizes": "1280x720",
+      "type": "image/png"
     }
   ],
   "launch_handler": {
-    "client_mode": "auto"
+    "client_mode": "focus-existing"
   }
 }
