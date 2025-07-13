@@ -26,11 +26,15 @@
     {
       "src": "/icons/screenshot1.png",
       "type": "image/png",
-      "sizes": "540x720",
-      "label": "الصفحة الرئيسية"
+      "sizes": "540x720"
+    },
+    {
+      "src": "/icons/screenshot2.png",
+      "type": "image/png",
+      "sizes": "540x720"
     }
   ],
   "launch_handler": {
-    "client_mode": "navigate-existing"
+    "client_mode": "focus-existing"
   }
 }
