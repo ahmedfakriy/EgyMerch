@@ -1,12 +1,11 @@
 {
-  "name": "EgyMerch - إيجي ميرش",
+  "name": "EgyMerch",
   "short_name": "EgyMerch",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d9488",
   "orientation": "portrait",
-  "description": "أفضل تصاميم الملابس الرياضية والكاجوال",
   "icons": [
     {
       "src": "/icons/icon-192.png",
