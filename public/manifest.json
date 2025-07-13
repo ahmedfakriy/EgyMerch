@@ -2,12 +2,18 @@
   "id": "/",
   "name": "EgyMerch - متجر الملابس",
   "short_name": "EgyMerch",
+  "description": "تطبيق إيچي ميرش لشراء الملابس أونلاين بسهولة وجودة عالية",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#0d9488",
   "lang": "ar",
   "scope": "/",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -17,6 +23,13 @@
     {
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/screenshot1.png",
+      "sizes": "540x960",
       "type": "image/png"
     }
   ]
