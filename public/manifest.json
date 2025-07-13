@@ -2,7 +2,9 @@
   "name": "EgyMerch",
   "short_name": "EgyMerch",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
+  "display_override": ["standalone", "browser"],
   "background_color": "#ffffff",
   "theme_color": "#0d9488",
   "orientation": "portrait",
@@ -17,5 +19,8 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
 }
