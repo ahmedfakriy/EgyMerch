@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
       <div className="bg-teal-100 py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-4 text-teal-700">
-            <span>🏪 متجر أبو جانتي محتوى 🅂</span>
+            <span>ENG:Ahmed fikry 🅂</span>
             <span>📱 بيع التيشيرت بتاعك مجاناً 🅂</span>
           </div>
           <div className="flex items-center gap-4">
