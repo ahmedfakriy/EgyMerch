@@ -18,12 +18,10 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
             <span>ENG:Ahmed fikry 🅂</span>
             <span>📱 بيع التيشيرت بتاعك مجاناً 🅂</span>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <img src="https://flagcdn.com/w20/us.png" alt="US" className="w-5 h-3" />
-              <span>دخول 🗲</span>
-              <span>التسجيل 🅂</span>
-            </div>
+          <div className="flex items-center gap-2">
+            <img src="https://flagcdn.com/w20/us.png" alt="US" className="w-5 h-3" />
+            <span>دخول 🗲</span>
+            <span>التسجيل 🅂</span>
           </div>
         </div>
       </div>
@@ -69,17 +67,18 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
 
           {/* Navigation */}
           <nav className="border-t py-3">
-            <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-gray-700 text-sm md:text-base text-center" dir="rtl">
-              <li 
-                className={`hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap ${currentPage === 'home' ? 'text-teal-600' : ''}`}
+            <ul className="flex items-center justify-center gap-4 md:gap-8 text-gray-700 text-sm md:text-base" dir="rtl">
+              <li
+                className={`hover:text-teal-600 cursor-pointer font-medium ${currentPage === 'home' ? 'text-teal-600' : ''}`}
                 onClick={() => onNavigation('home')}
               >
                 الرئيسية
               </li>
-              <li className="relative group hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap">
+
+              <li className="relative group hover:text-teal-600 cursor-pointer font-medium">
                 الأقسام
-                <div className="absolute top-full right-0 mt-2 bg-white border shadow-lg rounded-lg p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 min-w-[600px]">
-                  <div className="grid grid-cols-4 gap-6" dir="rtl">
+                <div className="absolute top-full right-0 mt-2 bg-white border shadow-lg rounded-lg p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-screen max-w-md md:max-w-4xl overflow-x-auto">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6" dir="rtl">
                     <div>
                       <h3 className="font-bold text-teal-600 mb-3">ملابس</h3>
                       <ul className="space-y-2 text-sm">
@@ -91,6 +90,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
                         <li className="hover:text-teal-600 cursor-pointer" onClick={() => onNavigation('products', 'هودي أوفر سايز')}>هودي أوفر سايز</li>
                       </ul>
                     </div>
+
                     <div>
                       <h3 className="font-bold text-teal-600 mb-3">ملابس أطفال</h3>
                       <ul className="space-y-2 text-sm">
@@ -98,6 +98,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
                         <li className="hover:text-teal-600 cursor-pointer" onClick={() => onNavigation('products', 'هودي أطفال')}>هودي أطفال</li>
                       </ul>
                     </div>
+
                     <div>
                       <h3 className="font-bold text-teal-600 mb-3">المنزل</h3>
                       <ul className="space-y-2 text-sm">
@@ -105,6 +106,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
                         <li className="hover:text-teal-600 cursor-pointer" onClick={() => onNavigation('products', 'تابلوهات')}>تابلوهات</li>
                       </ul>
                     </div>
+
                     <div>
                       <h3 className="font-bold text-teal-600 mb-3">شنط</h3>
                       <ul className="space-y-2 text-sm">
@@ -117,28 +119,20 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
                   </div>
                 </div>
               </li>
-              <li 
-                className="text-orange-500 hover:text-orange-600 cursor-pointer font-medium whitespace-nowrap"
-                onClick={() => onNavigation('products', 'new')}
-              >
+
+              <li className="text-orange-500 hover:text-orange-600 cursor-pointer font-medium" onClick={() => onNavigation('products', 'new')}>
                 الأحدث وجولة
               </li>
-              <li 
-                className="text-red-500 hover:text-red-600 cursor-pointer font-medium whitespace-nowrap"
-                onClick={() => onNavigation('products', 'bestseller')}
-              >
+
+              <li className="text-red-500 hover:text-red-600 cursor-pointer font-medium" onClick={() => onNavigation('products', 'bestseller')}>
                 الأكثر مبيعاً
               </li>
-              <li 
-                className="hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap"
-                onClick={() => onNavigation('products', 'all')}
-              >
+
+              <li className="hover:text-teal-600 cursor-pointer font-medium" onClick={() => onNavigation('products', 'all')}>
                 تصفح الكل
               </li>
-              <li 
-                className="hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap"
-                onClick={() => onNavigation('shipping')}
-              >
+
+              <li className="hover:text-teal-600 cursor-pointer font-medium" onClick={() => onNavigation('shipping')}>
                 عاوز شحن مجاني؟
               </li>
             </ul>
