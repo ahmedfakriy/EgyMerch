@@ -1,7 +1,11 @@
 import React from 'react';
 import { Facebook, Instagram, Phone, Mail } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-gray-800 text-white py-12">
       <div className="container mx-auto px-4">
@@ -17,8 +21,22 @@ const Footer: React.FC = () => {
               متجرك الأول للملابس الرياضية والتيشيرتات المميزة. نقدم لك أفضل التصميمات بأعلى جودة وأفضل الأسعار.
             </p>
             <div className="flex gap-4">
-              <Facebook className="w-6 h-6 text-blue-500 hover:text-blue-400 cursor-pointer" />
-              <Instagram className="w-6 h-6 text-pink-500 hover:text-pink-400 cursor-pointer" />
+              <a
+                href="https://www.facebook.com/ahmedfikryfauz?locale=ar_AR"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-6 h-6 text-blue-500 hover:text-blue-400 cursor-pointer" />
+              </a>
+              <a
+                href="https://www.instagram.com/ahmed_fekry_fauz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-6 h-6 text-pink-500 hover:text-pink-400 cursor-pointer" />
+              </a>
             </div>
           </div>
 
@@ -26,10 +44,18 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">روابط سريعة</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-white transition-colors">الرئيسية</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">المنتجات</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">من نحن</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">اتصل بنا</a></li>
+              <li>
+                <button onClick={() => onNavigate('home')} className="hover:text-white transition-colors">الرئيسية</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('products')} className="hover:text-white transition-colors">المنتجات</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('about')} className="hover:text-white transition-colors">من نحن</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">اتصل بنا</button>
+              </li>
             </ul>
           </div>
 
@@ -43,7 +69,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>info@egymerch.com</span>
+                <span>EgyMerchinfo@egymerch.com</span>
               </div>
             </div>
             

@@ -75,7 +75,6 @@ function App() {
     }
   };
 
-  // ✅ تحقق من /admin واطلب كلمة السر
   useEffect(() => {
     if (window.location.pathname === '/admin') {
       const password = prompt('أدخل كلمة المرور للدخول كأدمن:');
@@ -91,15 +90,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header 
+      <Header
         cartItemsCount={cartItemsCount}
         onCartClick={() => setIsCartOpen(true)}
         onNavigation={handleNavigation}
         currentPage={currentPage}
       />
-      
+
       {currentPage === 'home' && (
-        <ProductGrid 
+        <ProductGrid
           products={getFilteredProducts()}
           onAddToCart={addToCart}
           currentFilter={currentFilter}
@@ -108,7 +107,7 @@ function App() {
       )}
 
       {currentPage === 'products' && (
-        <ProductGrid 
+        <ProductGrid
           products={getFilteredProducts()}
           onAddToCart={addToCart}
           currentFilter={currentFilter}
@@ -122,26 +121,15 @@ function App() {
           <div className="container mx-auto px-4" dir="rtl">
             <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
               <h1 className="text-3xl font-bold text-center mb-8 text-teal-600">🚚 الشحن المجاني</h1>
-              
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-teal-50 p-6 rounded-lg">
                   <h2 className="text-xl font-bold mb-4 text-teal-700">شروط الشحن المجاني</h2>
                   <ul className="space-y-3 text-gray-700">
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
-                      طلبات بقيمة 500 جنيه أو أكثر
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
-                      داخل القاهرة والجيزة
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-2 h-2 bg-teal-500 rounded-full mr-3"></span>
-                      التوصيل خلال 2-3 أيام عمل
-                    </li>
+                    <li>طلبات بقيمة 500 جنيه أو أكثر</li>
+                    <li>داخل القاهرة والجيزة</li>
+                    <li>التوصيل خلال 2-3 أيام عمل</li>
                   </ul>
                 </div>
-                
                 <div className="bg-orange-50 p-6 rounded-lg">
                   <h2 className="text-xl font-bold mb-4 text-orange-700">أسعار الشحن العادي</h2>
                   <ul className="space-y-3 text-gray-700">
@@ -160,9 +148,8 @@ function App() {
                   </ul>
                 </div>
               </div>
-              
               <div className="mt-8 text-center">
-                <button 
+                <button
                   onClick={() => handleNavigation('home')}
                   className="bg-teal-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-teal-700 transition-colors"
                 >
@@ -173,9 +160,31 @@ function App() {
           </div>
         </div>
       )}
-      
-      <Footer />
-      
+
+      {currentPage === 'about' && (
+        <div className="py-16 bg-white text-center text-gray-700" dir="rtl">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-3xl font-bold mb-6 text-teal-600">من نحن</h1>
+            <p className="leading-relaxed">
+              نحن EgyMerch، متجر متخصص في الملابس الرياضية والتيشيرتات العصرية. هدفنا هو تقديم أفضل تجربة تسوق إلكتروني للعملاء في مصر، مع التركيز على الجودة، والسرعة، وخدمة ما بعد البيع.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {currentPage === 'contact' && (
+        <div className="py-16 bg-gray-50 text-center text-gray-700" dir="rtl">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-3xl font-bold mb-6 text-teal-600">📞 اتصل بنا</h1>
+            <p className="mb-4">📱 01023099469</p>
+            <p className="mb-4">✉️ EgyMerchinfo@egymerch.com</p>
+            <p>🕐 من 10 صباحًا حتى 8 مساءً - طوال أيام الأسبوع</p>
+          </div>
+        </div>
+      )}
+
+      <Footer onNavigate={handleNavigation} />
+
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
