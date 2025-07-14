@@ -33,14 +33,22 @@ const Cart: React.FC<CartProps> = ({
   };
 
   const handleSubmitOrder = () => {
-    alert(`تم إرسال طلبك بنجاح! 
-    الاسم: ${checkoutInfo.name}
-    الهاتف: ${checkoutInfo.phone}
-    العنوان: ${checkoutInfo.address}
-    طريقة الدفع: ${checkoutInfo.paymentMethod === 'vodafone' ? 'فودافون كاش: 01023099469' : 'حساب بنكي'}
-    المجموع: ${total} جنيه`);
-    
-    // Reset cart and close
+    const productDetails = cartItems
+      .map((item, index) => `${index + 1}. ${item.product.name} x ${item.quantity} = ${item.product.price * item.quantity}ج`)
+      .join('\n');
+
+    const message = `طلب جديد من الموقع:
+الاسم: ${checkoutInfo.name}
+الهاتف: ${checkoutInfo.phone}
+العنوان: ${checkoutInfo.address}
+طريقة الدفع: ${checkoutInfo.paymentMethod === 'vodafone' ? 'فودافون كاش' : 'حساب بنكي'}
+المجموع: ${total} جنيه
+المنتجات:
+${productDetails}`;
+
+    const whatsappLink = `https://wa.me/201023099469?text=${encodeURIComponent(message)}`;
+    window.open(whatsappLink, '_blank');
+
     cartItems.forEach(item => onRemoveItem(item.product.id));
     setShowCheckout(false);
     onClose();
