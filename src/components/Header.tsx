@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, ShoppingCart, Heart, User, Menu } from 'lucide-react';
+import { Search, ShoppingCart, Heart } from 'lucide-react';
 
 interface HeaderProps {
   cartItemsCount: number;
@@ -69,14 +69,14 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
 
           {/* Navigation */}
           <nav className="border-t py-3">
-            <ul className="flex items-center justify-center gap-8 text-gray-700" dir="rtl">
+            <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 text-gray-700 text-sm md:text-base text-center" dir="rtl">
               <li 
-                className={`hover:text-teal-600 cursor-pointer font-medium ${currentPage === 'home' ? 'text-teal-600' : ''}`}
+                className={`hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap ${currentPage === 'home' ? 'text-teal-600' : ''}`}
                 onClick={() => onNavigation('home')}
               >
                 الرئيسية
               </li>
-              <li className="relative group hover:text-teal-600 cursor-pointer font-medium">
+              <li className="relative group hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap">
                 الأقسام
                 <div className="absolute top-full right-0 mt-2 bg-white border shadow-lg rounded-lg p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 min-w-[600px]">
                   <div className="grid grid-cols-4 gap-6" dir="rtl">
@@ -118,25 +118,25 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onNavigati
                 </div>
               </li>
               <li 
-                className="text-orange-500 hover:text-orange-600 cursor-pointer font-medium"
+                className="text-orange-500 hover:text-orange-600 cursor-pointer font-medium whitespace-nowrap"
                 onClick={() => onNavigation('products', 'new')}
               >
                 الأحدث وجولة
               </li>
               <li 
-                className="text-red-500 hover:text-red-600 cursor-pointer font-medium"
+                className="text-red-500 hover:text-red-600 cursor-pointer font-medium whitespace-nowrap"
                 onClick={() => onNavigation('products', 'bestseller')}
               >
                 الأكثر مبيعاً
               </li>
               <li 
-                className="hover:text-teal-600 cursor-pointer font-medium"
+                className="hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap"
                 onClick={() => onNavigation('products', 'all')}
               >
                 تصفح الكل
               </li>
               <li 
-                className="hover:text-teal-600 cursor-pointer font-medium"
+                className="hover:text-teal-600 cursor-pointer font-medium whitespace-nowrap"
                 onClick={() => onNavigation('shipping')}
               >
                 عاوز شحن مجاني؟
