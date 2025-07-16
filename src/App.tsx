@@ -19,6 +19,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
   const [lastAdded, setLastAdded] = useState<{ product: Product; isExisting: boolean } | null>(null);
 
+  const toastId = "add-to-cart-toast";
+
   const addToCart = (product: Product) => {
     setCartItems(prev => {
       const existingItem = prev.find(item => item.product.id === product.id);
@@ -39,9 +41,13 @@ function App() {
   useEffect(() => {
     if (lastAdded) {
       if (lastAdded.isExisting) {
-        toast.success("✅ زودنا الكمية في السلة!");
+        if (!toast.isActive(toastId)) {
+          toast.success("✅ زودنا الكمية في السلة!", { toastId });
+        }
       } else {
-        toast.success("✅ تم إضافة المنتج إلى السلة!");
+        if (!toast.isActive(toastId)) {
+          toast.success("✅ تم إضافة المنتج إلى السلة!", { toastId });
+        }
       }
     }
   }, [lastAdded]);

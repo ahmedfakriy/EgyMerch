@@ -1,7 +1,5 @@
 import React from 'react';
 import { Product } from '../types';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 interface ProductCardProps {
   product: Product;
@@ -9,18 +7,11 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
-  // دالة جديدة تضيف للسلة وتعرض الإشعار
-  const handleAddToCart = (product: Product) => {
-    onAddToCart(product);
-    toast.success('✅ تم إضافة المنتج إلى السلة!');
-  };
-
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
-      {/* Product Image */}
       <div className="relative overflow-hidden">
-        <img 
-          src={product.image} 
+        <img
+          src={product.image}
           alt={product.name}
           className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -36,12 +27,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         )}
       </div>
 
-      {/* Product Info */}
       <div className="p-4" dir="rtl">
         <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
           {product.name}
         </h3>
-        
+
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold text-teal-600">
@@ -56,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         </div>
 
         <button
-          onClick={() => handleAddToCart(product)}
+          onClick={() => onAddToCart(product)}
           className="w-full bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors duration-300 font-medium"
         >
           إضافة للسلة
