@@ -17,29 +17,34 @@ function App() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [currentFilter, setCurrentFilter] = useState<string>('all');
   const [currentPage, setCurrentPage] = useState<string>('home');
+  const [lastAdded, setLastAdded] = useState<{ product: Product; isExisting: boolean } | null>(null);
 
   const addToCart = (product: Product) => {
-    let alreadyExists = false;
-
     setCartItems(prev => {
       const existingItem = prev.find(item => item.product.id === product.id);
       if (existingItem) {
-        alreadyExists = true;
+        setLastAdded({ product, isExisting: true });
         return prev.map(item =>
           item.product.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
+      } else {
+        setLastAdded({ product, isExisting: false });
+        return [...prev, { product, quantity: 1 }];
       }
-      return [...prev, { product, quantity: 1 }];
     });
-
-    if (alreadyExists) {
-      toast.info("✅ زودنا الكمية في السلة!");
-    } else {
-      toast.success("✅ تم إضافة المنتج إلى السلة!");
-    }
   };
+
+  useEffect(() => {
+    if (lastAdded) {
+      if (lastAdded.isExisting) {
+        toast.success("✅ زودنا الكمية في السلة!");
+      } else {
+        toast.success("✅ تم إضافة المنتج إلى السلة!");
+      }
+    }
+  }, [lastAdded]);
 
   const updateQuantity = (productId: number, quantity: number) => {
     if (quantity <= 0) {
