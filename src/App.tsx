@@ -7,6 +7,8 @@ import AdminPanel from './components/AdminPanel';
 import { Product, CartItem } from './types';
 import { products } from './data/products';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [localProducts, setLocalProducts] = useLocalStorage('egymerch_products', products);
@@ -17,9 +19,12 @@ function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');
 
   const addToCart = (product: Product) => {
+    let alreadyExists = false;
+
     setCartItems(prev => {
       const existingItem = prev.find(item => item.product.id === product.id);
       if (existingItem) {
+        alreadyExists = true;
         return prev.map(item =>
           item.product.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -28,6 +33,12 @@ function App() {
       }
       return [...prev, { product, quantity: 1 }];
     });
+
+    if (alreadyExists) {
+      toast.info("✅ زودنا الكمية في السلة!");
+    } else {
+      toast.success("✅ تم إضافة المنتج إلى السلة!");
+    }
   };
 
   const updateQuantity = (productId: number, quantity: number) => {
@@ -199,6 +210,8 @@ function App() {
         products={localProducts}
         onProductsUpdate={setLocalProducts}
       />
+
+      <ToastContainer />
     </div>
   );
 }

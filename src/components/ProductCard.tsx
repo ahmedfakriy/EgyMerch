@@ -1,5 +1,7 @@
 import React from 'react';
 import { Product } from '../types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ProductCardProps {
   product: Product;
@@ -7,6 +9,12 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+  // دالة جديدة تضيف للسلة وتعرض الإشعار
+  const handleAddToCart = (product: Product) => {
+    onAddToCart(product);
+    toast.success('✅ تم إضافة المنتج إلى السلة!');
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
       {/* Product Image */}
@@ -48,7 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
         </div>
 
         <button
-          onClick={() => onAddToCart(product)}
+          onClick={() => handleAddToCart(product)}
           className="w-full bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition-colors duration-300 font-medium"
         >
           إضافة للسلة
